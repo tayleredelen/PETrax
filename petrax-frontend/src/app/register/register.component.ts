@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegisterService } from './register.service';
 import { Router } from '@angular/router';
 
-declare let google: any;  
+declare let google: any;
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
       const script = document.createElement('script');
       script.src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtSNbZXisyon_iyVc0zzReieqXRO0mXto&libraries=places";
       document.head.appendChild(script);
-  
+
       // Initialize address autocomplete after API is loaded
       script.onload = () => {
         this.initAutocomplete();
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
         document.getElementById('address') as HTMLInputElement,
         { types: ['address'] }
       );
-  
+
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace();
         // Process the selected place data if needed
