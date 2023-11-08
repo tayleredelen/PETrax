@@ -5,6 +5,7 @@ import org.petrax.models.PetType;
 
 import javax.validation.constraints.NotNull;
 
+//DTO is a class that wraps or extends the PetProfile domain model with adtl properties (e.g., PetType)
 public class PetProfileDTO {
 
     @NotNull

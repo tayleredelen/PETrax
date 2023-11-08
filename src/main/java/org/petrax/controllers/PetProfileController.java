@@ -21,6 +21,10 @@ import org.petrax.data.PetProfileRepository;
 
 
 @RestController
+//controller class responsible for handling HTTP requests and providing responses,
+// particularly for RESTful APIs. This annotation combines the @Controller and
+// @ResponseBody annotations, which means that every method in this class is implicitly
+//annotated with @ResponseBody.
 @RequestMapping("/api/petProfile")
 public class PetProfileController {
 
@@ -35,7 +39,8 @@ public class PetProfileController {
     }
 
     @Autowired
-    private final PetProfileService petProfileService;   // Use the service instead of the repository directly
+    private final PetProfileService petProfileService;
+    // Use the service instead of the repository directly
 
     @Autowired
     private final UserRepository userRepository;
@@ -50,12 +55,15 @@ public class PetProfileController {
     public List<PetProfile> getAllPets() {
         return petProfileService.getAllPets();  // Utilize the service method here
     }
+//retrieve all pet profiles using the service method
+
 
     @GetMapping("/{petId}")
     public ResponseEntity<PetProfile> getPetById(@PathVariable int petId) {
         Optional<PetProfile> pet = petProfileService.getPetById(petId);  // Utilize the service method here
         return pet.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+//retrieve pet profile by ID using service method
 
     @PostMapping
     public ResponseEntity<PetProfile> addPet(@RequestBody PetProfile pet) {
@@ -65,13 +73,13 @@ public class PetProfileController {
         PetProfile savedPet = petProfileService.addPet(pet);
         return new ResponseEntity<>(savedPet, HttpStatus.CREATED);
     }
+// Add a new pet profile using the service and associate it with a user.
 
-//        PetProfile savedPet = petProfileService.addPet(pet);   // Utilize the service method here
-//        return new ResponseEntity<>(savedPet, HttpStatus.CREATED);
-//    }
+
 
     @PutMapping("/{petId}")
     public ResponseEntity<PetProfile> updatePet(@PathVariable int petId, @RequestBody PetProfile updatedPet) {
+// Update an existing pet profile using the service.
         Optional<PetProfile> pet = petProfileService.updatePet(petId, updatedPet);  // Utilize the service method here
         return pet.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
@@ -82,6 +90,8 @@ public class PetProfileController {
     public void deleteByPetId(@PathVariable int petId) {
         petProfileService.deleteByPetId(petId); // Utilize the service method to delete by petId
     }
+// Delete a pet profile by ID using the service.
+
 
 }
 

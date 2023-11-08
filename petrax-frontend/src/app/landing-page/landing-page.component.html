@@ -1,16 +1,16 @@
 <div class="center-container">
     <div class="rectangle">
             <div class = "welcome">
-                <h1>Welcome, UserName</h1>
+                <h1>Welcome, Tayler</h1>
             </div>
             <div class="profile-link">
-                <button (click)="navigateToProfile()">My Profile</button>    
-                <button (click)="navigateToProfessionals()">View Care Professionals</button>             
+                <button (click)="navigateToProfile()">My Profile</button>
+                <button (click)="navigateToProfessionals()">View Care Professionals</button>
             </div>
-        
+
 
     <!-- Diplay Links to pet profiles -->
-    <!-- Needs: 
+    <!-- Needs:
     Router links to individual profile for each user
     router link to add new pet page -->
     <div class="pet-card-container">
@@ -26,7 +26,7 @@
     <h4><a  class="pet-card" (click)="openAddPetModal()">Add New Pet!</a></h4>
 
     <!-- Upcoming Events Section
-    Needs: 
+    Needs:
     List upcoming events for a user within a time frame-- if none say "No events to show"
     Link to Calendar at the bottom of the section -->
     <div class="events-container">
@@ -35,7 +35,7 @@
           <ul class="event-list">
             <li *ngFor="let event of events">
                 <span class="event-date">{{ event.start | date }}</span>
-                <span class="event-title">{{ event.title }}</span>  
+                <span class="event-title">{{ event.title }}</span>
             </li>
           </ul>
         </div>
@@ -43,10 +43,9 @@
           <button class="calendar-link" (click)="navigateToCalendar()">Go To Calendar</button>
         </div>
       </div>
-      
+
 
 
     </div>
 </div>
 
-    
